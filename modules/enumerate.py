@@ -30,8 +30,12 @@ class Enumerate(object):
         cprint(line, 'green')
         c = 1
         for group in groups:
-            gname = group.split(':')[0]
-            passwd = group.split(':')[1]
+            line = group.split(':')
+            if len(line) < 2:
+                continue
+            gname = line[0]
+            passwd = line[1]
+            
             if passwd == "x":
                 passwd = "*In shadow*"
             guid = group.split(':')[2]
